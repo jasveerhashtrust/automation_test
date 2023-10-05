@@ -3,6 +3,7 @@ import subprocess
 import pytest
 import pyperclip
 from selenium.webdriver.common.by import By
+from selenium.webdriver import Chrome
 import tempfile
 import os
 import socket
@@ -25,6 +26,8 @@ def terminate_process_by_port(port):
 
 @pytest.mark.usefixtures("setup")
 class TestFetchAgents:
+    driver: Chrome
+
     def test_creating_yeour_first_uAgent(self):
         copy_button = self.driver.find_elements(
             By.XPATH, "//button[@title='Copy code']"
@@ -38,7 +41,8 @@ class TestFetchAgents:
             temp_file_path = os.path.join(temp_dir, "temp_script.py")
             with open(temp_file_path, "w") as temp_file:
                 temp_file.write(fist_uagent)
-            result = subprocess.Popen(["python", temp_file_path, "--port", "8000"])
+            result = subprocess.Popen(
+                ["python", temp_file_path, "--port", "8000"])
             print("Python script output:")
             print(result.stdout)
             time.sleep(6)
