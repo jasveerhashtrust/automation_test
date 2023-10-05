@@ -5,7 +5,8 @@ from selenium import webdriver
 
 options = webdriver.ChromeOptions()
 options.add_argument('--headless')
-options.add_argument('--no-sandbox')
+# Replace with the actual path to Chrome
+options.binary_location = '/opt/google/chrome/google-chrome'
 driver = webdriver.Chrome(options=options)
 
 
