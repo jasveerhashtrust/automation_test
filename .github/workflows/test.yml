@@ -26,9 +26,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y google-chrome-stable
           wget "https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/117.0.5938.149/linux64/chrome-linux64.zip"
-          unzip chromedriver_linux64.zip
-          sudo mv chromedriver /usr/local/bin/
-          sudo chmod +x /usr/local/bin/chromedriver
+          unzip chrome-linux64.zip
+          sudo mv chrome /usr/local/bin/
+          sudo chmod +x /usr/local/bin/chrome
 
       - name: Create virtual environment
         run: python -m venv venv
