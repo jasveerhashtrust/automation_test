@@ -13,8 +13,8 @@ def setup(request):
     driver.get('https://fetch.ai/docs/guides/agents/create-a-uagent')
     driver.maximize_window()
     time.sleep(2)
-    yield
-    driver.quit()
+    # yield
+    # driver.quit()
     # request.cls.driver = webdriver.Chrome()
     # request.cls.driver.get(
     #     'https://fetch.ai/docs/guides/agents/create-a-uagent')
