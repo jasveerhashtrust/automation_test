@@ -34,7 +34,7 @@ jobs:
         run: sudo python -m venv venv
 
       - name: Activate virtual environment
-        run: sudo source venv/bin/activate
+        run: source venv/bin/activate
 
       - name: Install dependencies
         run: |
@@ -46,4 +46,4 @@ jobs:
           sudo python -m pytest Test_Cases/Test_new.py
 
       - name: Deactivate virtual environment
-        run: sudo deactivate
+        run: deactivate
