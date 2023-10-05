@@ -8,7 +8,8 @@ from selenium.webdriver.chrome.service import Service
 def setup(request):
     # global driver
 
-    service = Service(executable_path="./chromedriver")
+    service = Service(
+        executable_path="/opt/hostedtoolcache/Python/3.10.4/x64/lib/python3.10/site-packages/selenium/webdriver/chrome/webdriver.py")
     driver = webdriver.Chrome(service=service)
     driver.get('https://fetch.ai/docs/guides/agents/create-a-uagent')
     driver.maximize_window()
