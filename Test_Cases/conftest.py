@@ -7,8 +7,8 @@ from selenium.webdriver.chrome.service import Service
 @pytest.fixture(scope="class")
 def setup(request):
     # global driver
-    service = Service(
-        executable_path="/home/runner/work/opt/google/chrome/google-chrome")
+
+    service = Service(executable_path="./chromedriver")
     driver = webdriver.Chrome(service=service)
     driver.get('https://fetch.ai/docs/guides/agents/create-a-uagent')
     driver.maximize_window()
