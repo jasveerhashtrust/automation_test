@@ -31,10 +31,10 @@ jobs:
           sudo chmod 755 /usr/local/bin/chrome-linux64
 
       - name: Create virtual environment
-        run: python -m venv venv
+        run: sudo python -m venv venv
 
       - name: Activate virtual environment
-        run: source venv/bin/activate
+        run: sudo source venv/bin/activate
 
       - name: Install dependencies
         run: |
@@ -46,4 +46,4 @@ jobs:
           sudo python -m pytest Test_Cases/Test_new.py
 
       - name: Deactivate virtual environment
-        run: deactivate
+        run: sudo deactivate
