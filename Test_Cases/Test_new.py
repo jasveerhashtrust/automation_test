@@ -3,7 +3,6 @@ import subprocess
 import pytest
 import pyperclip
 from selenium.webdriver.common.by import By
-from selenium.webdriver import Chrome
 import tempfile
 import os
 import socket
