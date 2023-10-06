@@ -45,4 +45,4 @@ jobs:
           python -m pytest Test_Cases/Test_new.py
 
       - name: Deactivate virtual environment
-        run: deactivate
+        run: sudo deactivate
