@@ -29,15 +29,15 @@ jobs:
         run: sudo apt-get install xvfb   
 
       - name: Create virtual environment
-        run: sudo python -m venv venv
+        run: python -m venv venv
 
       - name: Activate virtual environment
         run: source venv/bin/activate
 
       - name: Install dependencies
         run: |
-          sudo pip install --upgrade pip
-          sudo pip install -r requirements.txt
+          pip install --upgrade pip
+          pip install -r requirements.txt
           
       - name: Run your tests
         run: |
