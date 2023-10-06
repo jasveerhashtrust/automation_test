@@ -46,4 +46,4 @@ jobs:
           
       - name: Run your tests
         run: |
-          python -m pytest tests/automation_test.py
+          python -m pytest Test_Cases/Test_new.py
