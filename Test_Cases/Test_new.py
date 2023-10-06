@@ -27,6 +27,7 @@ def terminate_process_by_port(port):
 @pytest.mark.usefixtures("setup")
 class TestFetchAgents:
     def test_creating_yeour_first_uAgent(self):
+        print("copy")
         copy_button = self.driver.find_elements(
             By.XPATH, "//button[@title='Copy code']"
         )
@@ -34,11 +35,13 @@ class TestFetchAgents:
             if i == 2:
                 copy_button[i].click()
         time.sleep(3)
-        fist_uagent = pyperclip.paste()
-        print(fist_uagent, "pppppppp")
+        # fist_uagent = pyperclip.paste()
+        fist_uagent = 'print("jasveer")'
+        print(fist_uagent, "pppppppppppppppppppppppp")
         with tempfile.TemporaryDirectory() as temp_dir:
             temp_file_path = os.path.join(temp_dir, "temp_script.py")
             with open(temp_file_path, "w") as temp_file:
+                print("write")
                 temp_file.write(fist_uagent)
             result = subprocess.Popen(
                 ["python", temp_file_path, "--port", "8000"])
