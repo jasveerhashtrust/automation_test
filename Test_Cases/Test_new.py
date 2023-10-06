@@ -35,6 +35,7 @@ class TestFetchAgents:
                 copy_button[i].click()
         time.sleep(3)
         fist_uagent = pyperclip.paste()
+        print(fist_uagent, "pppppppp")
         with tempfile.TemporaryDirectory() as temp_dir:
             temp_file_path = os.path.join(temp_dir, "temp_script.py")
             with open(temp_file_path, "w") as temp_file:
