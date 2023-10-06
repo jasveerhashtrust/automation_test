@@ -21,14 +21,12 @@ jobs:
         with:
           python-version: 3.10.4
 
-      - name: Install Chrome and ChromeDriver
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
-          wget "https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/117.0.5938.149/linux64/chrome-linux64.zip"
-          unzip chrome-linux64.zip
-          sudo mv chrome-linux64  /usr/local/bin/
-          sudo chmod -R 755 /usr/local/bin/chrome-linux64
+      - name: Remove Chrome
+        run: sudo apt purge google-chrome-stable
+      - name: Remove default Chromium
+        run: sudo apt purge chromium-browser
+      - name: Install a new Chromium
+        run: sudo apt install -y chromium-browser
 
       - name: Create virtual environment
         run: sudo python -m venv venv
