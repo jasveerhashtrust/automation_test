@@ -1,3 +1,4 @@
+import os
 import time
 import pytest
 from selenium import webdriver
@@ -5,6 +6,10 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 
 # Specify the path to the ChromeDriver executable on your system
 chrome_driver_path = '/usr/local/bin/chrome-linux64'
+
+# Check and adjust file permissions if needed
+if not os.access(chrome_driver_path, os.X_OK):
+    os.chmod(chrome_driver_path, 0o755)  # Give execute permissions (755)
 
 # Start the ChromeDriver service
 service = ChromeService(executable_path=chrome_driver_path)
