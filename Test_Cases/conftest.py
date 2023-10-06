@@ -4,7 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 
 # Specify the path to the ChromeDriver executable on your system
-chrome_driver_path = '/usr/local/bin/chrome-linux64'
+chrome_driver_path = '/usr/local/bin'
 
 # Start the ChromeDriver service
 service = ChromeService(executable_path=chrome_driver_path)
