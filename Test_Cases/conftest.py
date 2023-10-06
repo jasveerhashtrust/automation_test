@@ -1,37 +1,45 @@
-import os
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 import time
 import pytest
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service as ChromeService
-import undetected_chromedriver.v2 as uc
+import chromedriver_autoinstaller
+from pyvirtualdisplay import Display
+display = Display(visible=0, size=(800, 800))
+display.start()
 
+# Check if the current version of chromedriver exists
+chromedriver_autoinstaller.install()
+# and if it doesn't exist, download it automatically,
+# then add chromedriver to path
 
-# Specify the path to the ChromeDriver executable on your system
-chrome_driver_path = '/usr/local/bin/chrome-linux64'
+chrome_options = webdriver.ChromeOptions()
+# Add your options as needed
+options = [
+    # Define window size here
+    "--window-size=1200,1200",
+    "--ignore-certificate-errors"
 
-# Check and adjust file permissions if needed
-if not os.access(chrome_driver_path, os.X_OK):
-    os.chmod(chrome_driver_path, 0o755)  # Give execute permissions (755)
+    # "--headless",
+    # "--disable-gpu",
+    # "--window-size=1920,1200",
+    # "--ignore-certificate-errors",
+    # "--disable-extensions",
+    # "--no-sandbox",
+    # "--disable-dev-shm-usage",
+    # '--remote-debugging-port=9222'
+]
 
-# Start the ChromeDriver service
-service = ChromeService(executable_path=chrome_driver_path)
-service.start()
-
-# Configure ChromeDriver options, such as running in headless mode
-# chrome_options = webdriver.ChromeOptions()
-# chrome_options.add_argument('--headless')
-
-# Initialize the WebDriver with the service and options
-chrome_options = uc.ChromeOptions()
-driver = webdriver.Chrome(service=service, options=chrome_options)
-
-# Fixture for setting up the driver
+for option in options:
+    chrome_options.add_argument(option)
 
 
 @pytest.fixture(scope="class")
 def setup(request):
-    driver.get('https://fetch.ai/docs/guides/agents/create-a-uagent')
-    driver.maximize_window()
+    request.cls.driver = webdriver.Chrome(options=chrome_options)
+    request.cls.driver.get(
+        'https://fetch.ai/docs/guides/agents/create-a-uagent')
+    request.cls.driver.maximize_window()
     time.sleep(2)
     yield
-    driver.quit()
+    request.cls.driver.quit()

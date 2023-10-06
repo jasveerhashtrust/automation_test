@@ -26,8 +26,6 @@ def terminate_process_by_port(port):
 
 @pytest.mark.usefixtures("setup")
 class TestFetchAgents:
-    driver: Chrome
-
     def test_creating_yeour_first_uAgent(self):
         copy_button = self.driver.find_elements(
             By.XPATH, "//button[@title='Copy code']"

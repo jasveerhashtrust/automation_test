@@ -4,3 +4,5 @@ pyperclip==1.8.2
 pytest==7.4.2
 psutil==5.9.5
 undetected-chromedriver==2.0.0
+chromedriver-autoinstaller==0.6.2
+PyVirtualDisplay==3.0
