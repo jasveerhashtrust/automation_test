@@ -3,6 +3,8 @@ import time
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
+import undetected_chromedriver.v2 as uc
+
 
 # Specify the path to the ChromeDriver executable on your system
 chrome_driver_path = '/usr/local/bin/chrome-linux64'
@@ -16,10 +18,11 @@ service = ChromeService(executable_path=chrome_driver_path)
 service.start()
 
 # Configure ChromeDriver options, such as running in headless mode
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument('--headless')
+# chrome_options = webdriver.ChromeOptions()
+# chrome_options.add_argument('--headless')
 
 # Initialize the WebDriver with the service and options
+chrome_options = uc.ChromeOptions()
 driver = webdriver.Chrome(service=service, options=chrome_options)
 
 # Fixture for setting up the driver
